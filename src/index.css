@@ -1,0 +1,51 @@
+.login-image {
+  background-image: url("https://source.unsplash.com/random/1600x900");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 60vw;
+}
+
+.form-container {
+  width: 40vw;
+  text-align: center;
+}
+
+.login-container {
+  height: calc(100vh - 80px);
+}
+
+.login-title {
+  margin-bottom: 3rem;
+}
+
+.form-login {
+  margin-bottom: 10rem;
+}
+
+.login-form {
+  margin-bottom: 20rem;
+}
+
+@media (max-width: 768px) {
+  .btn-login {
+    width: 100%;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .login-container {
+    height: 100vh;
+    max-height: calc(100vh - 350px);
+  }
+  .form-login {
+    margin-bottom: 0;
+  }
+  .login-title {
+    margin-bottom: 0;
+    padding: 2rem;
+  }
+  .login-form {
+    margin-bottom: 8rem;
+  }
+}

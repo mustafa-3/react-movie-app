@@ -54,6 +54,16 @@
   cursor: pointer;
 }
 
-.card {
+.card-main {
   width: 36rem;
+}
+
+.card-detail {
+font-size: 1.5rem;
+
+
+}
+
+.card-body {
+  height: 100vh;
 }

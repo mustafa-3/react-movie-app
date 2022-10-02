@@ -9,7 +9,7 @@ const Cards = ({ movieData }) => {
     //   <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
     //   <h5>{title}</h5>
     // </div>
-    <div className="card col-sm-12 col-md-6 cold-lg-4 cursor-pointer m-4" onClick={() => navigate(`/detail/${id}`)}>
+    <div className="card col-sm-12 col-md-6 cold-lg-4 cursor-pointer m-4 card-main" onClick={() => navigate(`/detail/${id}`)}>
       <img
         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
         className="card-img-top"

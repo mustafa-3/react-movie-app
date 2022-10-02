@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const MovieDetail = ({movieData}) => {
@@ -11,6 +11,11 @@ const MovieDetail = ({movieData}) => {
     .then((res) => res.json())
     .then((data) => setMovieInfo(data))
   }
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  console.log(movieInfo);
   return (
     <div>MovieDetail</div>
   )

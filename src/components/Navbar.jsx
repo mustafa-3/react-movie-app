@@ -49,15 +49,15 @@ const Navbar = ({ setQuery, getData, query }) => {
               </Link>
             </li>
           </ul>
-          <form class="d-flex" role="search" onSubmit={handleSubmit}>
+          <form className="d-flex" role="search" onSubmit={handleSubmit}>
             <input
-              class="form-control me-2 "
+              className="form-control me-2 "
               type="search"
               placeholder="Search a movie.."
               aria-label="Search"
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>

@@ -42,7 +42,7 @@ const MovieDetail = () => {
               <p className="card-text">Total Vote: {vote_count}</p>
               <button
                 type="button"
-                class="btn btn-info"
+                className="btn btn-info"
                 onClick={() => navigate(-1)}
               >
                 Go back

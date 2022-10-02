@@ -22,18 +22,17 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-export const SignUp = () => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+export const signUp = (auth, email, password, navigate) => {
+  createUserWithEmailAndPassword(auth, email, password).then(
+    (userCredential) => {
       const user = userCredential.user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+      console.log(userCredential);
+      navigate("(/");
+    }
+  );
 };
 
-export const Login = () => {
+export const login = (auth, email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -44,7 +43,7 @@ export const Login = () => {
     });
 };
 
-export const UserObserver = () => {
+export const userObserver = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -53,7 +52,7 @@ export const UserObserver = () => {
   });
 };
 
-export const SignInWithGoogle = () => {
+export const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth();
@@ -66,6 +65,6 @@ export const SignInWithGoogle = () => {
     });
 };
 
-export const Logout = () => {
+export const logout = () => {
   signOut(auth);
 };

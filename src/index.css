@@ -49,3 +49,11 @@
     margin-bottom: 8rem;
   }
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card {
+  width: 36rem;
+}

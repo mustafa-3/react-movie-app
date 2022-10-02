@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from "react";
+import Cards from "../components/Cards";
 import MovieDetail from "./MovieDetail";
 
 const Main = () => {
-  const [movieData, setMovieData] = useState();
-  const APİ_KEY = "5c0e880db2a28d7094088d664c7cec1e";
-  const [query, setQuery] = useState()
-  const url = `https://api.themoviedb.org/3/movie/550?api_key=${APİ_KEY}&query=${query}`;
-  const getData = () => {
-    fetch(url)
+  const [movieData, setMovieData] = useState([]);
+  const API_KEY = "5c0e880db2a28d7094088d664c7cec1e";
+  const [query, setQuery] = useState("batman");
+  const FEATURED_APİ = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+  const SEARCH_APİ = ` https://api.themoviedb.org/3/search/movie/?api_key=${API_KEY}&query=${query}`;
+  const getData = (API) => {
+    fetch(API)
       .then((res) => res.json())
       .then((data) => setMovieData(data))
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    getData();
+    getData(FEATURED_APİ);
   }, []);
 
   console.log(movieData);
 
   return (
-    // <div>
-    //   {movieData?.map((item) => {
-    //     return (
-    //       <div>
-    //         <MovieDetail movieData={movieData} />
-    //       </div>
-    //     );
-    //   })}
-    // </div>
-    <div>asds</div>
-    
+    <div className="row text-center g-4 justify-content-center">
+      {movieData?.results?.map((item, index) => {
+        return <Cards movieData={item} key={index} />;
+      })}
+    </div>
   );
 };
 

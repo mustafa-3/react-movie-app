@@ -27,6 +27,22 @@
   margin-bottom: 20rem;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-main {
+  width: 36rem;
+}
+
+.card-detail {
+  font-size: 1.5rem;
+}
+
+.card-body {
+  margin-top: 10rem;
+}
+
 @media (max-width: 768px) {
   .btn-login {
     width: 100%;
@@ -50,20 +66,8 @@
   }
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.card-main {
-  width: 36rem;
-}
-
-.card-detail {
-font-size: 1.5rem;
-
-
-}
-
-.card-body {
-  height: 100vh;
+@media (max-width: 1080px) {
+  .card-body {
+    margin-top: 0;
+  }
 }

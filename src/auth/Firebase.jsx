@@ -90,8 +90,7 @@ export const signInWithGoogle = (navigate) => {
     });
 };
 
-export const logOut = (navigate) => {
+export const logOut = () => {
   signOut(auth);
   toastSuccessNotify("Successfully logged out");
-  navigate("/login");
 };

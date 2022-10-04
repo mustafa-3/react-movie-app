@@ -10,13 +10,10 @@ const Navbar = ({ setQuery, getData, query }) => {
   const API_KEY = "5c0e880db2a28d7094088d664c7cec1e";
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (currentUser) {
-      getData(
-        ` https://api.themoviedb.org/3/search/movie/?api_key=${API_KEY}&query=${query}`
-      );
-    } else {
-      toastWarnNotify("Please Log in");
-    }
+
+    getData(
+      ` https://api.themoviedb.org/3/search/movie/?api_key=${API_KEY}&query=${query}`
+    );
   };
 
   return (

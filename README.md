@@ -7,3 +7,5 @@ My purpose in making this project is to use the power of React Hooks on the page
 - 5.useParams
 - 6.useNavigation
 - 7.Bootstrap
+
+[Click here to see the page..](https://react-movie-app11.netlify.app/)

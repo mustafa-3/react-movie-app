@@ -64,7 +64,7 @@ const Navbar = ({ setQuery, getData, query }) => {
               <li className="nav-item">
                 <button
                   className="ms-2 btn btn-primary"
-                  onClick={() => logOut()}
+                  onClick={() => logOut(navigate)}
                 >
                   Logout
                 </button>

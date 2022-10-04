@@ -9,6 +9,11 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+  toastWarnNotify,
+} from "../helpers/Toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBS91OWqVVw1TztPbO7HsnBlH2uh9zpLkU",
@@ -35,9 +40,11 @@ export const signUp = async (email, password, navigate, displayName) => {
       displayName: displayName,
     });
     navigate("/");
+    toastSuccessNotify("Successfully registered account");
     console.log(userCredential);
   } catch (error) {
     console.log(error);
+    toastErrorNotify(error.message);
   }
 };
 
@@ -48,9 +55,11 @@ export const login = async (email, password, navigate) => {
       email,
       password
     );
-    navigate(-1);
+    navigate("/");
+    toastSuccessNotify("Successfully logged in");
   } catch (error) {
     console.log(error);
+    toastErrorNotify(error.message);
   }
 };
 
@@ -72,13 +81,17 @@ export const signInWithGoogle = (navigate) => {
     .then((result) => {
       console.log(result);
       navigate(-1);
+      toastSuccessNotify("Successfully logged in");
     })
 
     .catch((error) => {
       console.log(error);
+      toastErrorNotify(error.message);
     });
 };
 
-export const logOut = () => {
+export const logOut = (navigate) => {
   signOut(auth);
+  toastSuccessNotify("Successfully logged out");
+  navigate("/login");
 };

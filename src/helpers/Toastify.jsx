@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 export const toastErrorNotify = (msg) => {
-  toast.error("🦄 Wow so easy!", {
+  toast.error(msg, {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -12,7 +12,7 @@ export const toastErrorNotify = (msg) => {
   });
 };
 export const toastSuccessNotify = (msg) => {
-  toast.success("🦄 Wow so easy!", {
+  toast.success(msg, {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,

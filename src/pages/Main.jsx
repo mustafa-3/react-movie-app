@@ -24,7 +24,7 @@ const Main = () => {
 
   return (
     <>
-      <Navbar setQuery={setQuery} getData={getData} query={query}/>
+      <Navbar setQuery={setQuery} getData={getData} query={query} />
       <div className="row text-center g-4 justify-content-center">
         {movieData?.results?.map((item, index) => {
           return <Cards movieData={item} key={index} />;

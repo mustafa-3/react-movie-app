@@ -4,21 +4,8 @@ import { logOut } from "../auth/Firebase";
 import { AuthContext } from "../context/AuthContextProvider";
 import { toastWarnNotify } from "../helpers/Toastify";
 
-const Navbar = ({ setQuery, getData, query }) => {
-  const navigate = useNavigate();
+const Appbar = ({ setQuery, getData, query }) => {
   const { currentUser } = useContext(AuthContext);
-  const API_KEY = "5c0e880db2a28d7094088d664c7cec1e";
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (currentUser) {
-      getData(
-        ` https://api.themoviedb.org/3/search/movie/?api_key=${API_KEY}&query=${query}`
-      );
-    } else {
-      toastWarnNotify("Please Log in");
-    }
-  };
-
   return (
     <nav className="navbar navbar-expand-lg bg-light  display-6">
       <div className="container-fluid ">
@@ -74,23 +61,10 @@ const Navbar = ({ setQuery, getData, query }) => {
           {currentUser && (
             <h5 className="me-4 display-6">{currentUser.displayName}</h5>
           )}
-          <form className="d-flex" role="search" onSubmit={handleSubmit}>
-            <input
-              className="form-control me-2 "
-              type="search"
-              placeholder="Search a movie.."
-              aria-label="Search"
-              required
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default Appbar;

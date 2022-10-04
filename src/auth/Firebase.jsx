@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -22,49 +23,62 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-export const signUp = (auth, email, password, navigate) => {
-  createUserWithEmailAndPassword(auth, email, password).then(
-    (userCredential) => {
-      const user = userCredential.user;
-      console.log(userCredential);
-      navigate("(/");
-    }
-  );
-};
+export const signUp = async (email, password, navigate, displayName) => {
+  try {
+    let userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-export const login = (auth, email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
     });
+    navigate("/");
+    console.log(userCredential);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export const userObserver = () => {
+export const login = async (email, password, navigate) => {
+  try {
+    let userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    navigate(-1);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const userObserver = (setCurrentUser) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.uid;
+      setCurrentUser(user);
     } else {
+      setCurrentUser(false);
     }
   });
 };
 
-export const signInWithGoogle = () => {
+export const signInWithGoogle = (navigate) => {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth();
   signInWithPopup(auth, provider)
     .then((result) => {
       console.log(result);
+      navigate(-1);
     })
+
     .catch((error) => {
       console.log(error);
     });
 };
 
-export const logout = () => {
+export const logOut = () => {
   signOut(auth);
 };
